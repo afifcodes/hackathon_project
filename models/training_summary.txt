@@ -1,0 +1,29 @@
+CropGuard AI - Training Summary Report
+====================================
+Total Epochs: 17
+Classes Detected: 6
+------------------------------
+Final Training Accuracy:   0.8702
+Final Validation Accuracy: 0.8775
+Final Training Loss:       0.3976
+Final Validation Loss:     0.4077
+------------------------------
+
+Epoch-by-Epoch Progress:
+Epoch 01: Acc: 0.7262 | Val_Acc: 0.7867
+Epoch 02: Acc: 0.7556 | Val_Acc: 0.7975
+Epoch 03: Acc: 0.7887 | Val_Acc: 0.8142
+Epoch 04: Acc: 0.8000 | Val_Acc: 0.8317
+Epoch 05: Acc: 0.8183 | Val_Acc: 0.8300
+Epoch 06: Acc: 0.8210 | Val_Acc: 0.8417
+Epoch 07: Acc: 0.8358 | Val_Acc: 0.8483
+Epoch 08: Acc: 0.8421 | Val_Acc: 0.8550
+Epoch 09: Acc: 0.8506 | Val_Acc: 0.8533
+Epoch 10: Acc: 0.8519 | Val_Acc: 0.8633
+Epoch 11: Acc: 0.8602 | Val_Acc: 0.8650
+Epoch 12: Acc: 0.8562 | Val_Acc: 0.8750
+Epoch 13: Acc: 0.8692 | Val_Acc: 0.8742
+Epoch 14: Acc: 0.8596 | Val_Acc: 0.8750
+Epoch 15: Acc: 0.8621 | Val_Acc: 0.8767
+Epoch 16: Acc: 0.8619 | Val_Acc: 0.8775
+Epoch 17: Acc: 0.8702 | Val_Acc: 0.8775
