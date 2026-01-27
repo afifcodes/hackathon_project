@@ -11,6 +11,8 @@ DATA_DIR = 'dataset'
 # IMG_SIZE is 224x224 as it is the standard input size for MobileNetV2 
 # trained on ImageNet, ensuring optimal feature extraction.
 IMG_SIZE = (224, 224)
+# Batch size of 32 provides a good balance between training stability 
+# and memory efficiency, allowing the model to generalize effectively.
 BATCH_SIZE = 32
 # Epochs limited to 8-12 for hackathon speed while ensuring 
 # sufficient convergence for a functional prototype.
@@ -81,10 +83,16 @@ def train_model():
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
     x = Dropout(0.2)(x)
+    # Dense layer with softmax activation is used for multi-class classification
+    # to provide a probability distribution over the predicted classes.
     predictions = Dense(num_classes, activation='softmax')(x)
 
     model = Model(inputs=base_model.input, outputs=predictions)
 
+    # The Adam optimizer is chosen for its adaptive learning rate capabilities, 
+    # making it robust and efficient for training neural networks.
+    # Categorical Crossentropy is the standard loss function for multi-class 
+    # problems where each image belongs to exactly one category.
     model.compile(optimizer=Adam(learning_rate=0.0001), 
                   loss='categorical_crossentropy', 
                   metrics=['accuracy'])
