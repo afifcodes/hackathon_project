@@ -21,155 +21,156 @@ st.markdown("""
 <style>
     /* Global Styles */
     .stApp {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background-color: #ffffff;
     }
     
     .main {
         background-color: transparent;
-        color: #000000 !important; /* Explicit black text */
-        font-family: 'Inter', 'Segoe UI', serif;
+        color: #1a1a1a !important;
+        font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
     }
     
     /* Header Section */
     .header-container {
-        background: #ffffff !important; /* Solid background for maximum contrast */
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 2rem;
-        border: 2px solid #1b5e20;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 2rem 0;
         text-align: center;
+        margin-bottom: 2rem;
     }
     
     h1 {
-        color: #1b5e20 !important; /* Brand green, but solid */
+        color: #1b5e20 !important;
         font-weight: 800;
-        margin-bottom: 0px;
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
     }
     
     .subtitle {
-        color: #000000 !important; /* Black text for clarity */
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-top: 5px;
+        color: #555555 !important;
+        font-size: 1.5rem;
+        font-weight: 400;
     }
     
-    /* Instructions Card */
-    .instruction-card {
-        background: #ffffff !important; /* Solid white */
-        color: #000000 !important; /* Black text */
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 2px solid #2e7d32;
-        margin-bottom: 1rem;
+    /* Instructions */
+    .instruction-text {
+        color: #333333 !important;
+        font-size: 1.1rem;
+        line-height: 1.6;
     }
     
-    .instruction-card strong, .instruction-card li {
-        color: #000000 !important;
-    }
-    
-    /* Input/Result Headings */
+    /* Section Headers */
     .section-header {
         color: #1b5e20 !important;
-        font-weight: 800;
-        border-bottom: 3px solid #1b5e20;
-        padding-bottom: 5px;
-        margin-bottom: 20px;
-        font-size: 1.4rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.5rem;
     }
     
-    /* Scan Button */
+    /* Buttons */
     .stButton>button {
         width: 100%;
-        background: #1b5e20 !important; /* Solid dark green */
-        color: #ffffff !important;
+        background-color: #2e7d32 !important;
+        color: white !important;
         border: none;
         border-radius: 8px;
-        padding: 0.75rem 1rem;
-        font-weight: 700;
+        padding: 0.75rem;
         font-size: 1.1rem;
+        font-weight: 600;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
     }
     
-    /* Result Card */
+    .stButton>button:hover {
+        background-color: #1b5e20 !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    /* Result Card - The Focal Point */
     .result-card {
-        background: #ffffff !important; /* Solid white */
-        padding: 2rem;
-        border-radius: 15px;
-        border: 2px solid #e0e0e0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        background: #f8f9fa;
+        padding: 2.5rem;
+        border-radius: 16px;
         text-align: center;
         margin-top: 1rem;
+        border: 1px solid #e0e0e0;
     }
     
     .prediction-text {
-        color: #000000 !important; /* Black text for prediction */
-        font-size: 2.2rem;
+        color: #000000 !important;
+        font-size: 3.5rem;
         font-weight: 900;
-        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+    }
+    
+    .confidence-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 1rem;
     }
     
     .confidence-high {
-        color: #1b5e20 !important; /* Dark solid green */
-        font-size: 1.4rem;
-        font-weight: 700;
+        background-color: #e8f5e9;
+        color: #1b5e20;
     }
     
     .confidence-low {
-        color: #b71c1c !important; /* Solid dark red */
-        font-size: 1.4rem;
-        font-weight: 700;
+        background-color: #ffebee;
+        color: #c62828;
     }
     
     /* Treatment Section */
     .treatment-section {
-        background: #ffffff !important; /* Solid white */
-        color: #000000 !important;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-top: 1.5rem;
-        border: 2px solid #689f38;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+        text-align: left;
     }
     
     .treatment-header {
-        color: #1b5e20 !important;
-        font-weight: 800;
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #e0e0e0;
-        padding-bottom: 5px;
+        color: #333333 !important;
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
     }
 
     .treatment-section p {
-        color: #000000 !important;
-        font-size: 1.1rem;
-        line-height: 1.5;
+        color: #444444 !important;
+        font-size: 1.15rem;
+        line-height: 1.6;
     }
 
-    /* Fix Streamlit standard expander text */
-    .stExpander {
-        background-color: #ffffff !important;
-        border: 2px solid #1b5e20 !important;
-    }
-
-    .stExpander p, .stExpander label, .stExpander div {
-        color: #000000 !important;
-        font-weight: 500;
-    }
-
-    /* Sidebar Contrast */
+    /* Sidebar adjustments */
     [data-testid="stSidebar"] {
-        background-color: #ffffff !important;
-        border-right: 2px solid #e0e0e0;
+        background-color: #f5f5f5;
+        border-right: 1px solid #e0e0e0;
     }
-
-    [data-testid="stSidebar"] .stMarkdown p {
-        color: #000000 !important;
+    
+    /* Widget Labels & Input Text */
+    /* Target Radio button options ("Upload Image", "Use Camera") */
+    div[role="radiogroup"] p {
+        color: #1a1a1a !important;
+        font-weight: 600;
         font-size: 1.05rem;
     }
-
-    [data-testid="stSidebar"] h3 {
-        color: #1b5e20 !important;
-        font-weight: 800;
+    
+    /* Target Widget Labels ("Upload an image", "Input Method:") */
+    label[data-testid="stWidgetLabel"] p {
+        color: #1a1a1a !important;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    
+    /* Alerts (Success, Info, Warning, Error) Text */
+    div[data-baseweb="alert"] div {
+        color: #1a1a1a !important;
+        font-weight: 500;
     }
     
 </style>
@@ -196,46 +197,38 @@ def load_model():
 # App Header
 st.markdown("""
 <div class="header-container">
-    <h1>🌿 CropGuard AI</h1>
-    <p class="subtitle">Intelligent Plant Health Diagnostic Tool</p>
+    <h1>CropGuard AI</h1>
+    <p class="subtitle">Instant Plant Disease Diagnosis</p>
 </div>
 """, unsafe_allow_html=True)
 
 # Instructions Section
-with st.expander("ℹ️ How to use CropGuard AI", expanded=True):
+with st.container():
     st.markdown("""
-    <div class="instruction-card">
-        <strong>Simple 3-Step Process:</strong>
-        <ol>
-            <li><strong>Input:</strong> Upload a clear photo of a single leaf or use your camera.</li>
-            <li><strong>Analyze:</strong> Click the 'Analyze Leaf' button to run the AI diagnostic.</li>
-            <li><strong>Results:</strong> Review the prediction, confidence level, and treatment advice.</li>
-        </ol>
-        <strong>Tip: For best results, ensure the leaf is well-lit and centered in the frame.</strong>
+    <div class="instruction-text">
+        <strong>How it works:</strong> Upload a clear leaf photo → Get instant diagnosis & treatment advice.
     </div>
     """, unsafe_allow_html=True)
 
 # Sidebar
 st.sidebar.title("About")
 st.sidebar.info(
-    "CropGuard AI leverages Cutting-edge Computer Vision (MobileNetV2) "
-    "to help farmers and gardeners identify crop diseases instantly. "
-    "Early detection is key to preventing crop loss."
+    "CropGuard AI helps farmers identify crop diseases instantly using computer vision."
 )
 st.sidebar.markdown("---")
 st.sidebar.markdown("### Settings")
-confidence_threshold = st.sidebar.slider("Confidence Threshold", 0.0, 1.0, 0.65, 0.05)
+confidence_threshold = st.sidebar.slider("Minimum Confidence", 0.0, 1.0, 0.65, 0.05)
 
 # Main Interface
 col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
-    st.markdown('<p class="section-header">📸 Image Input</p>', unsafe_allow_html=True)
+    st.markdown('<p class=\"section-header\">Add a Leaf Photo</p>', unsafe_allow_html=True)
     # Image Source Selection
-    input_method = st.radio("Select Input Method:", ("Upload Image", "Use Camera"), horizontal=True)
+    input_method = st.radio("Input Method:", ("Upload Image", "Use Camera"), horizontal=True)
     
     if input_method == "Upload Image":
-        uploaded_file = st.file_uploader("Choose a leaf image...", type=["jpg", "jpeg", "png"])
+        uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
         image = None
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
@@ -249,11 +242,11 @@ with col1:
             # st.image(image, caption="Captured Image", use_column_width=True) # Camera input shows preview already
 
 with col2:
-    st.markdown('<p class="section-header">🔍 Analysis Results</p>', unsafe_allow_html=True)
+    st.markdown('<p class=\"section-header\">Analysis Results</p>', unsafe_allow_html=True)
     
     if image is not None:
         if st.button("Analyze Leaf", type="primary"):
-            with st.spinner("Analyzing image..."):
+            with st.spinner("Analyzing..."):
                 # Load model
                 model = load_model()
                 
@@ -306,8 +299,8 @@ with col2:
                     st.markdown(f"""
                     <div class="result-card">
                         <div class="prediction-text">{predicted_class_display}</div>
-                        <div class="{ 'confidence-high' if confidence > confidence_threshold else 'confidence-low'}">
-                            Confidence: {confidence * 100:.2f}%
+                        <div class="confidence-tag { 'confidence-high' if confidence > confidence_threshold else 'confidence-low'}">
+                            Confidence: {confidence * 100:.1f}%
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -315,17 +308,16 @@ with col2:
                     # Handing Low Confidence
                     if confidence < confidence_threshold:
                         st.warning(f"""
-                            **Low Confidence Warning** ({confidence*100:.1f}%)
-                            The model is uncertain. The image might be unclear or belong to an unsupported type.
-                            Please consult an agricultural expert.
+                            **Note:** Confidence is low ({confidence*100:.1f}%). 
+                            The model isn't sure about this result. It might not be a leaf or the image is blurry.
                         """)
                     
                     # Treatment Recommendation
-                    treatment = TREATMENTS.get(predicted_class, "Consult an agricultural expert for specific advice on this condition.")
+                    treatment = TREATMENTS.get(predicted_class, "Please consult an agricultural expert for advice.")
                     
                     st.markdown(f"""
                     <div class="treatment-section">
-                        <div class="treatment-header">💊 Recommended Treatment</div>
+                        <div class="treatment-header">Recommended Action</div>
                         <p>{treatment}</p>
                     </div>
                     """, unsafe_allow_html=True)
@@ -337,4 +329,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.markdown("<div style='text-align: center; color: #000000; font-weight: bold; margin-bottom: 20px;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #666; font-size: 0.9rem;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
