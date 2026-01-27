@@ -116,5 +116,9 @@ def train_model():
     with open('models/class_indices.txt', 'w') as f:
         f.write(str(train_generator.class_indices))
 
+    # Save training history and summary using the separate logger file
+    from logger import save_training_results
+    save_training_results(history.history, EPOCHS, num_classes)
+
 if __name__ == "__main__":
     train_model()
