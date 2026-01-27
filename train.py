@@ -8,8 +8,12 @@ from tensorflow.keras.optimizers import Adam
 
 # Config
 DATA_DIR = 'dataset'
+# IMG_SIZE is 224x224 as it is the standard input size for MobileNetV2 
+# trained on ImageNet, ensuring optimal feature extraction.
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
+# Epochs limited to 8-12 for hackathon speed while ensuring 
+# sufficient convergence for a functional prototype.
 EPOCHS = 12
 
 def get_dataset_dir():
@@ -64,9 +68,13 @@ def train_model():
     print(f"Found {num_classes} classes: {list(train_generator.class_indices.keys())}")
 
     # Base Model: MobileNetV2
+    # MobileNetV2 is chosen for its efficiency and low latency, 
+    # making it suitable for future mobile/edge deployment in the field.
     base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
     
-    # Freeze base logic
+    # Freeze base logic (Transfer Learning)
+    # By freezing base layers pretrained on ImageNet, we retain the general image recognition 
+    # capabilities (edges, textures) and only train the top layers for our specific task.
     base_model.trainable = False
 
     # Classification Head
