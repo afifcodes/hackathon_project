@@ -1,0 +1,1 @@
+{'Tomato_Early-blight': 0, 'Tomato_Healthy': 1, 'Tomato_bac-spot': 2, 'Tomato_late-blight': 3, 'tomato_leaf-mold': 4, 'tomato_mosaic_virus': 5}

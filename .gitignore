@@ -22,7 +22,7 @@ wheels/
 *.egg
 
 # TensorFlow
-*.h5
+# *.h5
 *.hd5
 *.hdf5
 *.ckpt
@@ -30,7 +30,7 @@ wheels/
 
 # Project specific
 dataset/
-models/
+# models/
 
 # VS Code
 .vscode/
