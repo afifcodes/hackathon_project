@@ -26,118 +26,150 @@ st.markdown("""
     
     .main {
         background-color: transparent;
-        color: #1a1a1a;
+        color: #000000 !important; /* Explicit black text */
         font-family: 'Inter', 'Segoe UI', serif;
     }
     
     /* Header Section */
     .header-container {
-        background: rgba(255, 255, 255, 0.8);
-        padding: 2.5rem;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
+        background: #ffffff !important; /* Solid background for maximum contrast */
+        padding: 2rem;
+        border-radius: 15px;
         margin-bottom: 2rem;
-        border: 1px solid rgba(255,255,255,0.3);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        border: 2px solid #1b5e20;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         text-align: center;
     }
     
     h1 {
-        color: #1b5e20;
+        color: #1b5e20 !important; /* Brand green, but solid */
         font-weight: 800;
-        letter-spacing: -0.5px;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0px;
     }
     
     .subtitle {
-        color: #4a4a4a;
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
+        color: #000000 !important; /* Black text for clarity */
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 5px;
     }
     
     /* Instructions Card */
     .instruction-card {
-        background: white;
+        background: #ffffff !important; /* Solid white */
+        color: #000000 !important; /* Black text */
         padding: 1.5rem;
         border-radius: 12px;
-        border-left: 5px solid #2e7d32;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border: 2px solid #2e7d32;
+        margin-bottom: 1rem;
+    }
+    
+    .instruction-card strong, .instruction-card li {
+        color: #000000 !important;
     }
     
     /* Input/Result Headings */
     .section-header {
-        color: #2e7d32;
-        font-weight: 700;
-        border-bottom: 2px solid #81c784;
-        padding-bottom: 8px;
-        margin-bottom: 15px;
-        font-size: 1.3rem;
+        color: #1b5e20 !important;
+        font-weight: 800;
+        border-bottom: 3px solid #1b5e20;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
     }
     
     /* Scan Button */
     .stButton>button {
         width: 100%;
-        background: linear-gradient(to right, #43a047, #1b5e20);
-        color: white;
+        background: #1b5e20 !important; /* Solid dark green */
+        color: #ffffff !important;
         border: none;
-        border-radius: 12px;
+        border-radius: 8px;
         padding: 0.75rem 1rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton>button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 5px 15px rgba(67, 160, 71, 0.3);
+        font-weight: 700;
+        font-size: 1.1rem;
     }
     
     /* Result Card */
     .result-card {
-        background: white;
+        background: #ffffff !important; /* Solid white */
         padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        border: 1px solid #e0e0e0;
+        border-radius: 15px;
+        border: 2px solid #e0e0e0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         text-align: center;
         margin-top: 1rem;
     }
     
     .prediction-text {
-        color: #1b5e20;
-        font-size: 1.8rem;
-        font-weight: 800;
+        color: #000000 !important; /* Black text for prediction */
+        font-size: 2.2rem;
+        font-weight: 900;
         margin-bottom: 0.5rem;
     }
     
     .confidence-high {
-        color: #2e7d32;
-        font-size: 1.2rem;
-        font-weight: 600;
+        color: #1b5e20 !important; /* Dark solid green */
+        font-size: 1.4rem;
+        font-weight: 700;
     }
     
     .confidence-low {
-        color: #c62828;
-        font-size: 1.2rem;
-        font-weight: 600;
+        color: #b71c1c !important; /* Solid dark red */
+        font-size: 1.4rem;
+        font-weight: 700;
     }
     
     /* Treatment Section */
     .treatment-section {
-        background-color: #f1f8e9;
+        background: #ffffff !important; /* Solid white */
+        color: #000000 !important;
         padding: 1.5rem;
-        border-radius: 15px;
+        border-radius: 12px;
         margin-top: 1.5rem;
-        border-left: 5px solid #689f38;
+        border: 2px solid #689f38;
     }
     
     .treatment-header {
-        color: #33691e;
-        font-weight: 700;
+        color: #1b5e20 !important;
+        font-weight: 800;
+        font-size: 1.2rem;
         margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 5px;
+    }
+
+    .treatment-section p {
+        color: #000000 !important;
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    /* Fix Streamlit standard expander text */
+    .stExpander {
+        background-color: #ffffff !important;
+        border: 2px solid #1b5e20 !important;
+    }
+
+    .stExpander p, .stExpander label, .stExpander div {
+        color: #000000 !important;
+        font-weight: 500;
+    }
+
+    /* Sidebar Contrast */
+    [data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+        border-right: 2px solid #e0e0e0;
+    }
+
+    [data-testid="stSidebar"] .stMarkdown p {
+        color: #000000 !important;
+        font-size: 1.05rem;
+    }
+
+    [data-testid="stSidebar"] h3 {
+        color: #1b5e20 !important;
+        font-weight: 800;
     }
     
 </style>
@@ -179,7 +211,7 @@ with st.expander("ℹ️ How to use CropGuard AI", expanded=True):
             <li><strong>Analyze:</strong> Click the 'Analyze Leaf' button to run the AI diagnostic.</li>
             <li><strong>Results:</strong> Review the prediction, confidence level, and treatment advice.</li>
         </ol>
-        <em>Tip: For best results, ensure the leaf is well-lit and centered in the frame.</em>
+        <strong>Tip: For best results, ensure the leaf is well-lit and centered in the frame.</strong>
     </div>
     """, unsafe_allow_html=True)
 
@@ -305,4 +337,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.markdown("<div style='text-align: center; color: #444; margin-bottom: 20px;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #000000; font-weight: bold; margin-bottom: 20px;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
