@@ -20,85 +20,124 @@ st.set_page_config(
 st.markdown("""
 <style>
     /* Global Styles */
+    .stApp {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    
     .main {
-        background-color: #f8f9fa;
-        color: #333333;
-        font-family: 'Inter', sans-serif;
+        background-color: transparent;
+        color: #1a1a1a;
+        font-family: 'Inter', 'Segoe UI', serif;
     }
     
-    /* Title */
-    h1 {
-        color: #2E7D32;
-        font-weight: 700;
+    /* Header Section */
+    .header-container {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 2.5rem;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         text-align: center;
-        padding-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* Subheader */
-    h3 {
-        color: #4CAF50;
-        border-bottom: 2px solid #4CAF50;
-        padding-bottom: 10px;
+    h1 {
+        color: #1b5e20;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+        color: #4a4a4a;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Instructions Card */
+    .instruction-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 5px solid #2e7d32;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    /* Input/Result Headings */
+    .section-header {
+        color: #2e7d32;
+        font-weight: 700;
+        border-bottom: 2px solid #81c784;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
     }
     
     /* Scan Button */
     .stButton>button {
-        background-image: linear-gradient(to right, #4CAF50, #2E7D32);
+        width: 100%;
+        background: linear-gradient(to right, #43a047, #1b5e20);
         color: white;
         border: none;
-        border-radius: 25px;
-        padding: 12px 30px;
-        font-size: 18px;
-        font-weight: bold;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(67, 160, 71, 0.3);
     }
     
     /* Result Card */
     .result-card {
         background: white;
         padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        margin-top: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border: 1px solid #e0e0e0;
         text-align: center;
-        border-left: 5px solid #4CAF50;
+        margin-top: 1rem;
+    }
+    
+    .prediction-text {
+        color: #1b5e20;
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
     }
     
     .confidence-high {
-        color: #2E7D32;
-        font-weight: bold;
+        color: #2e7d32;
+        font-size: 1.2rem;
+        font-weight: 600;
     }
     
     .confidence-low {
-        color: #D32F2F;
-        font-weight: bold;
-    }
-    
-    /* Warning Box */
-    .warning-box {
-        background-color: #FFF3E0;
-        border: 1px solid #FFB74D;
-        color: #E65100;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 15px;
-        text-align: left;
+        color: #c62828;
+        font-size: 1.2rem;
+        font-weight: 600;
     }
     
     /* Treatment Section */
     .treatment-section {
-        background-color: #E8F5E9;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-        border: 1px solid #C8E6C9;
+        background-color: #f1f8e9;
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin-top: 1.5rem;
+        border-left: 5px solid #689f38;
+    }
+    
+    .treatment-header {
+        color: #33691e;
+        font-weight: 700;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     
 </style>
@@ -123,28 +162,45 @@ def load_model():
     return model
 
 # App Header
-st.title("🌿 CropGuard AI")
-st.markdown("**Advanced Plant Disease Detection System**")
-st.markdown("Upload a leaf image to identify diseases and get treatment recommendations.")
+st.markdown("""
+<div class="header-container">
+    <h1>🌿 CropGuard AI</h1>
+    <p class="subtitle">Intelligent Plant Health Diagnostic Tool</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Instructions Section
+with st.expander("ℹ️ How to use CropGuard AI", expanded=True):
+    st.markdown("""
+    <div class="instruction-card">
+        <strong>Simple 3-Step Process:</strong>
+        <ol>
+            <li><strong>Input:</strong> Upload a clear photo of a single leaf or use your camera.</li>
+            <li><strong>Analyze:</strong> Click the 'Analyze Leaf' button to run the AI diagnostic.</li>
+            <li><strong>Results:</strong> Review the prediction, confidence level, and treatment advice.</li>
+        </ol>
+        <em>Tip: For best results, ensure the leaf is well-lit and centered in the frame.</em>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Sidebar
 st.sidebar.title("About")
 st.sidebar.info(
-    "This AI application uses a Transfer Learning model (MobileNetV2) "
-    "to classify crop leaf diseases with high accuracy. "
-    "Designed for rapid diagnosis in the field."
+    "CropGuard AI leverages Cutting-edge Computer Vision (MobileNetV2) "
+    "to help farmers and gardeners identify crop diseases instantly. "
+    "Early detection is key to preventing crop loss."
 )
 st.sidebar.markdown("---")
 st.sidebar.markdown("### Settings")
 confidence_threshold = st.sidebar.slider("Confidence Threshold", 0.0, 1.0, 0.65, 0.05)
 
 # Main Interface
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
-    st.subheader("Input Image")
+    st.markdown('<p class="section-header">📸 Image Input</p>', unsafe_allow_html=True)
     # Image Source Selection
-    input_method = st.radio("Select Input Method:", ("Upload Image", "Use Camera"))
+    input_method = st.radio("Select Input Method:", ("Upload Image", "Use Camera"), horizontal=True)
     
     if input_method == "Upload Image":
         uploaded_file = st.file_uploader("Choose a leaf image...", type=["jpg", "jpeg", "png"])
@@ -161,7 +217,7 @@ with col1:
             # st.image(image, caption="Captured Image", use_column_width=True) # Camera input shows preview already
 
 with col2:
-    st.subheader("Analysis Results")
+    st.markdown('<p class="section-header">🔍 Analysis Results</p>', unsafe_allow_html=True)
     
     if image is not None:
         if st.button("Analyze Leaf", type="primary"):
@@ -188,14 +244,10 @@ with col2:
                     if os.path.exists(CLASS_INDICES_PATH):
                         with open(CLASS_INDICES_PATH, 'r') as f:
                             indices = eval(f.read()) # Safe for trusted local file
-                            # indices is {'class': 0, ...}
-                            # Invert to {0: 'class', ...}
                             idx_to_class = {v: k for k, v in indices.items()}
                             class_names = [idx_to_class[i] for i in range(len(idx_to_class))]
                     else:
                         try:
-                            # Fallback: Keras defaults to alphanumeric sort
-                            # Assuming standard structure: dataset/<plant>/<classes>
                             if os.path.exists('dataset'):
                                 subdirs = [d for d in os.listdir('dataset') if os.path.isdir(os.path.join('dataset', d))]
                                 if subdirs:
@@ -210,12 +262,10 @@ with col2:
                         predicted_class_display = "Unknown"
                     elif class_idx < len(class_names):
                         predicted_class = class_names[class_idx]
-                        
-                        # Apply confidence threshold logic for display
                         if confidence < confidence_threshold:
                             predicted_class_display = "Uncertain"
                         else:
-                            predicted_class_display = predicted_class
+                            predicted_class_display = predicted_class.replace('_', ' ').title()
                     else:
                         predicted_class = "Unknown"
                         predicted_class_display = "Unknown"
@@ -223,30 +273,27 @@ with col2:
                     # Display
                     st.markdown(f"""
                     <div class="result-card">
-                        <h2>Prediction: {predicted_class_display}</h2>
-                        <h3 class="{ 'confidence-high' if confidence > confidence_threshold else 'confidence-low'}">
+                        <div class="prediction-text">{predicted_class_display}</div>
+                        <div class="{ 'confidence-high' if confidence > confidence_threshold else 'confidence-low'}">
                             Confidence: {confidence * 100:.2f}%
-                        </h3>
+                        </div>
                     </div>
                     """, unsafe_allow_html=True)
 
                     # Handing Low Confidence
                     if confidence < confidence_threshold:
-                        st.markdown(f"""
-                        <div class="warning-box">
-                            ⚠️ <strong>Low Confidence Warning</strong><br>
-                            The model is uncertain ({confidence*100:.1f}%). The image might be unclear, 
-                            contain multiple leaves, or belong to an unsupported plant/disease type.
-                            <br>Please consult an agricultural expert for confirmation.
-                        </div>
-                        """, unsafe_allow_html=True)
+                        st.warning(f"""
+                            **Low Confidence Warning** ({confidence*100:.1f}%)
+                            The model is uncertain. The image might be unclear or belong to an unsupported type.
+                            Please consult an agricultural expert.
+                        """)
                     
                     # Treatment Recommendation
                     treatment = TREATMENTS.get(predicted_class, "Consult an agricultural expert for specific advice on this condition.")
                     
                     st.markdown(f"""
                     <div class="treatment-section">
-                        <h4>💊 Recommended Treatment</h4>
+                        <div class="treatment-header">💊 Recommended Treatment</div>
                         <p>{treatment}</p>
                     </div>
                     """, unsafe_allow_html=True)
@@ -258,4 +305,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.markdown("<div style='text-align: center; color: #666;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #444; margin-bottom: 20px;'>© 2026 CropGuard AI • Hackathon Prototype</div>", unsafe_allow_html=True)
