@@ -29,7 +29,7 @@ wheels/
 *.tflite
 
 # Project specific
-dataset/
+# dataset/
 # models/
 
 # VS Code
